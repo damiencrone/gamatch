@@ -21,11 +21,6 @@ fitness_fun_min_f = function (x, nsub, ncond, npg, data) {
   wrong_n_assignments = sum(xmat) != npg*ncond
   var_names = colnames(data)
 
-  print(paste("multiple_condition_assignments:", multiple_condition_assignments))
-  print(paste("wrong_n_per_group:", wrong_n_per_group))
-  print(paste("wrong_n_assignments:", wrong_n_assignments))
-  print(xmat)
-
   is_invalid = multiple_condition_assignments |
     wrong_n_per_group |
     wrong_n_assignments
