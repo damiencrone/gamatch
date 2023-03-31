@@ -1,6 +1,6 @@
 Package: gamatch
 Type: Package
-Title: Perform psudo-random assignment minimizing between-group variation
+Title: An R package for psudo-random assignment minimizing between-group variation
 Version: 0.1.0
 Author: Who wrote it
 Maintainer: Damien Crone <d.crone@northeastern.edu>

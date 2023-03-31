@@ -5,15 +5,12 @@
 \title{Calculates the fitness of a genetic algorithm solution for a experimental
 design problem with a minimum f-statistic objective.}
 \usage{
-fitness_fun_min_f(x, nsub, ngroups, ncond, npg, data)
+fitness_fun_min_f(x, nsub, ncond, npg, data)
 }
 \arguments{
 \item{x}{A binary vector representing the genetic algorithm solution.}
 
 \item{nsub}{An integer specifying the number of subjects in the dataset}
-
-\item{ngroups}{An integer specifying the number of matched groups of N = 1
-per condition to which subjects are to be assigned.}
 
 \item{ncond}{An integer specifying the number of experimental conditions in
 the experiment.}

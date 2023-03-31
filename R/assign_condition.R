@@ -22,16 +22,20 @@
 #'
 #' @export
 assign_condition = function(data, group_labels, assignment_mat, groupvar = "condition") {
+  all_row_ind = rownames(data)
   for (i in 1:length(group_labels)) {
-    row_ind = rownames(data)[assignment_mat[i,]]
+    row_ind = all_row_ind[assignment_mat[, i]]
     data[row_ind, groupvar] = group_labels[i]
   }
-
-  data_remainder = data[-unlist(assignment_mat),]
+  row_ind = all_row_ind[-unlist(assignment_mat)]
+  data_remainder = data[row_ind,]
   if (nrow(data_remainder)) {
+    message("Assigning remainder participants")
     remainder_assignment = sample(x = group_labels,
                                   size = nrow(data_remainder))
     data[rownames(data_remainder), groupvar] = remainder_assignment
+  } else {
+    message("No remainder participants")
   }
   return(data)
 }

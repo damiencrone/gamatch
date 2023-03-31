@@ -16,10 +16,9 @@
 #' @export
 perform_matched_random_assignment = function (data, ncond, nsuggestions = 500) {
   nsub = nrow(data)
-  ngroups = floor(nsub / ncond)
   npg = floor(nsub/ngroups)
-  nbits = ngroups*nsub
-  suggestion_mat = generate_suggestions(nsuggestions, nsub, ngroups)
+  nbits = ncond*nsub
+  suggestion_mat = generate_suggestions(nsuggestions, nsub, ncond)
   ga_output = ga(
     type = "binary",
     fitness = fitness_fun_min_f,
@@ -30,12 +29,11 @@ perform_matched_random_assignment = function (data, ncond, nsuggestions = 500) {
     suggestions = suggestion_mat,
     # Additional fitness function inputs
     nsub    = nsub,
-    ngroups = ngroups,
     ncond   = ncond,
     npg     = npg,
     data    = data
   )
-  assignment_mat = extract_group_assignment(ga_output, nsub, ngroups)
+  assignment_mat = extract_group_assignment(ga_output, nsub, ncond)
   data = assign_condition(data = data,
                           group_labels = condition_labels,
                           assignment_mat = assignment_mat)

@@ -4,7 +4,7 @@
 \alias{generate_suggestions}
 \title{Generates suggestions for a genetic algorithm solution.}
 \usage{
-generate_suggestions(nsuggestions, nsub, ngroups)
+generate_suggestions(nsuggestions, nsub, ncond)
 }
 \arguments{
 \item{nsuggestions}{An integer specifying the number of suggestions to
@@ -12,12 +12,12 @@ generate.}
 
 \item{nsub}{An integer specifying the number of subjects requiring matching.}
 
-\item{ngroups}{An integer specifying the number of conditions to which
+\item{ncond}{An integer specifying the number of conditions to which
 subjects are to be assigned}
 }
 \value{
 A binary matrix with \code{nsuggestions} rows and \code{nsub *
-  ngroups} columns, where each row represents a suggested genetic algorithm
+  ncond} columns, where each row represents a suggested genetic algorithm
   solution.
 }
 \description{

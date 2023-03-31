@@ -4,7 +4,7 @@
 \alias{extract_group_assignment}
 \title{Extracts the group assignments from a genetic algorithm output object.}
 \usage{
-extract_group_assignment(ga_output, nsub, ngroups)
+extract_group_assignment(ga_output, nsub, ncond)
 }
 \arguments{
 \item{ga_output}{An object of class \code{ga-class}, representing the output
@@ -12,11 +12,11 @@ of a genetic algorithm run.}
 
 \item{nsub}{An integer specifying the number of subjects.}
 
-\item{ngroups}{An integer specifying the number of matched groups of N = 1
+\item{ncond}{An integer specifying the number of matched groups of N = 1
 per condition to which subjects are to be assigned.}
 }
 \value{
-A matrix with \code{nsub} rows and \code{ngroups} columns, where each
+A matrix with \code{nsub} rows and \code{ncond} columns, where each
   row represents a subject and each column represents a set of matched
   subjects.
 }

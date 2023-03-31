@@ -3,8 +3,6 @@
 #'
 #' @param x A binary vector representing the genetic algorithm solution.
 #' @param nsub An integer specifying the number of subjects in the dataset
-#' @param ngroups An integer specifying the number of matched groups of N = 1
-#'   per condition to which subjects are to be assigned.
 #' @param ncond An integer specifying the number of experimental conditions in
 #'   the experiment.
 #' @param npg An integer specifying the number of subjects per condition.
@@ -15,13 +13,18 @@
 #'   solution.
 #'
 #' @export
-fitness_fun_min_f = function (x, nsub, ngroups, ncond, npg, data) {
+fitness_fun_min_f = function (x, nsub, ncond, npg, data) {
 
-  xmat = matrix(data = x, nrow = nsub, ncol = ngroups)
+  xmat = matrix(data = x, nrow = nsub, ncol = ncond)
   multiple_condition_assignments = any(rowSums(xmat) > 1)
-  wrong_n_per_group = sum(colSums(xmat) == npg) != ngroups
-  wrong_n_assignments = sum(xmat) != npg*ngroups
+  wrong_n_per_group = any(colSums(xmat) != npg)
+  wrong_n_assignments = sum(xmat) != npg*ncond
   var_names = colnames(data)
+
+  print(paste("multiple_condition_assignments:", multiple_condition_assignments))
+  print(paste("wrong_n_per_group:", wrong_n_per_group))
+  print(paste("wrong_n_assignments:", wrong_n_assignments))
+  print(xmat)
 
   is_invalid = multiple_condition_assignments |
     wrong_n_per_group |
