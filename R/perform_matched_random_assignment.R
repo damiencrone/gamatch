@@ -16,7 +16,7 @@
 #' @export
 perform_matched_random_assignment = function (data, ncond, nsuggestions = 500) {
   nsub = nrow(data)
-  npg = floor(nsub/ngroups)
+  npg = floor(nsub/ncond)
   nbits = ncond*nsub
   suggestion_mat = generate_suggestions(nsuggestions, nsub, ncond)
   ga_output = ga(
